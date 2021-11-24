@@ -27,7 +27,6 @@ export default function GhostBox({ id, onFound }: Props) {
   useEffect(() => {
     if (cntMint <= 0) setCntMint(0);
     else if (cntMint > 10) setCntMint(10);
-    console.log("onFound", id, cntMint);
     onFound({ boxId: id, cnt: cntMint });
   }, [cntMint]);
 
@@ -52,9 +51,14 @@ export default function GhostBox({ id, onFound }: Props) {
           </Flex>
         </Box>
         <Box>
-          <video className="hero-image" autoPlay loop muted>
-            <source src={mpSrc} type="video/mp4" />
-          </video>
+          <Box
+            className="hero-image"
+            as="video"
+            src={mpSrc}
+            autoPlay
+            loop
+            muted
+          />
           <Text className="paragraph">{countMinted}/5000</Text>
         </Box>
         <Box className="div-block-2">

@@ -16,7 +16,7 @@ import { useState } from "react";
 
 export default function App() {
   interface Ghost {
-    BoxId: number;
+    boxId: number;
     cnt: number;
   }
 
@@ -30,17 +30,14 @@ export default function App() {
   }
 
   const appendGhostBox = (newGhost: Ghost) => {
-    let _ghostFes = [0, 0, 0];
-    if (newGhost.BoxId === 1) _ghostFes[0] = newGhost.cnt;
-    else if (newGhost.BoxId === 2) _ghostFes[1] = newGhost.cnt;
-    else if (newGhost.BoxId === 3) _ghostFes[2] = newGhost.cnt;
-    console.log(_ghostFes);
-    setGhostFes(_ghostFes);
+    ghostFes[newGhost.boxId] = newGhost.cnt;
+    setGhostFes(ghostFes);
+    console.log(ghostFes);
   };
 
   const handlePurchase = () => {
     if (account) {
-      console.log("GhostFestival", ghostFes);
+      alert(ghostFes);
     } else alert("Please connect your wallet!");
   };
 
