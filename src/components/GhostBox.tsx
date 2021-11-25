@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { Box, Flex, Image, Text, Center, Circle } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Button,
+  Text,
+  Center,
+  Circle,
+} from "@chakra-ui/react";
 
 type Props = {
   id: number;
@@ -10,7 +18,7 @@ type Props = {
 export default function GhostBox({ id, onFound }: Props) {
   const countMinted = 38;
   const CnSoul = 300;
-  const BoxNum = ["One", "Two", "Three"];
+  const BoxNum = ["Common", "Rare", "Legendary"];
   const [cntMint, setCntMint] = useState(0);
   const [mpSrc, getMpSrc] = useState("");
 
@@ -33,22 +41,14 @@ export default function GhostBox({ id, onFound }: Props) {
   return (
     <Box className="column-5 w-col w-col-4 w-col-tiny-tiny-stack">
       <Box className="div-block-3">
-        <Box
-          mt="26px"
-          color="#0f9"
-          fontFamily="'Changa One', Impact, sans-serif"
-          fontSize="54px"
-          fontWeight={400}
-          textShadow="5px 5px #5b00da"
-          lineHeight="1em"
-          mb="10px"
-          pl="26px"
-        >
-          Box type
-          <Flex>
-            <Text color="#ff0066">{BoxNum[id]}</Text>
-            <Text>.</Text>
-          </Flex>
+        <Box>
+          <Box className="div-block">
+            <h1 className="heading">
+              {BoxNum[id]}
+              <br />
+              <span className="text-span">Founder's Crate</span>.
+            </h1>
+          </Box>
         </Box>
         <Box>
           <Box
@@ -64,11 +64,14 @@ export default function GhostBox({ id, onFound }: Props) {
         <Box className="div-block-2">
           <Box className="columns-6 w-row">
             <Box className="column-7 w-col w-col-4">
-              <Circle
-                size={9}
+              <Button
                 bg="#5b00da"
-                color="#ffff00"
+                borderRadius="20px"
+                color="#ff0"
+                fontSize="24px"
+                p="initial"
                 _hover={{
+                  cursor: "pointer",
                   border: "1px",
                   borderStyle: "solid",
                   borderColor: "purple.700",
@@ -78,8 +81,8 @@ export default function GhostBox({ id, onFound }: Props) {
                   setCntMint((prevCntMint) => prevCntMint - 1);
                 }}
               >
-                <MinusIcon w={2} h={2} />
-              </Circle>
+                -
+              </Button>
             </Box>
             <Box className="column-9 w-col w-col-4">
               <Center
@@ -96,11 +99,14 @@ export default function GhostBox({ id, onFound }: Props) {
               </Center>
             </Box>
             <Box className="column-6 w-col w-col-4">
-              <Circle
-                size={9}
+              <Button
                 bg="#5b00da"
-                color="#ffff00"
+                borderRadius="20px"
+                color="#ff0"
+                fontSize="24px"
+                p="initial"
                 _hover={{
+                  cursor: "pointer",
                   border: "1px",
                   borderStyle: "solid",
                   borderColor: "purple.700",
@@ -110,12 +116,12 @@ export default function GhostBox({ id, onFound }: Props) {
                   setCntMint((prevCntMint) => prevCntMint + 1);
                 }}
               >
-                <AddIcon w={2} h={2} />
-              </Circle>
+                +
+              </Button>
             </Box>
           </Box>
           <Text className="heading-6" lineHeight="44px" my="10px">
-            {CnSoul} SOUL
+            {CnSoul * cntMint} SOUL
           </Text>
         </Box>
       </Box>
