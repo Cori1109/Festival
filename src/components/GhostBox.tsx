@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Flex,
-  Image,
-  Button,
-  Text,
-  Center,
-  Circle,
-} from "@chakra-ui/react";
+import { Box, Button, Text, Center } from "@chakra-ui/react";
 
 type Props = {
   id: number;
@@ -36,7 +27,7 @@ export default function GhostBox({ id, onFound }: Props) {
     if (cntMint <= 0) setCntMint(0);
     else if (cntMint > 10) setCntMint(10);
     onFound({ boxId: id, cnt: cntMint });
-  }, [cntMint]);
+  }, [cntMint, id, onFound]);
 
   return (
     <Box className="column-5 w-col w-col-4 w-col-tiny-tiny-stack">
@@ -89,11 +80,11 @@ export default function GhostBox({ id, onFound }: Props) {
                 bg="#ff0066"
                 color="#ffff00"
                 w={12}
-                fontSize={18}
+                fontFamily="'Changa One', Impact, sans-serif"
+                fontSize={24}
                 fontWeight={600}
                 borderRadius={12}
                 border="3px solid #5b00da"
-                p={1}
               >
                 {cntMint}
               </Center>

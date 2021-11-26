@@ -1,13 +1,4 @@
-import {
-  ChakraProvider,
-  Center,
-  Box,
-  Flex,
-  Text,
-  Button,
-  Image,
-  Alert,
-} from "@chakra-ui/react";
+import { ChakraProvider, Box, Flex, Text, Button } from "@chakra-ui/react";
 import { useEthers, useEtherBalance } from "@usedapp/core";
 import { formatEther } from "@ethersproject/units";
 import Identicon from "./components/Identicon";
@@ -27,7 +18,6 @@ export default function App() {
   const [totalMint, setTotalMint] = useState("");
   const { activateBrowserWallet, account } = useEthers();
   const etherBalance = useEtherBalance(account);
-  const isMobile = window.screen.width <= window.screen.height ? true : false;
 
   function handleConnectWallet() {
     activateBrowserWallet();
