@@ -7,9 +7,11 @@ type Props = {
 };
 
 export default function GhostBox({ id, onFound }: Props) {
-  const countMinted = 38;
-  const CnSoul = 300;
-  const BoxNum = ["Common", "Rare", "Legendary"];
+  const maxSupply = [9000, 3000, 500];
+  const priceCrate = [15, 45, 250];
+
+  const countMinted = 0;
+  const crateName = ["Common", "Rare", "Epic"];
   const [cntMint, setCntMint] = useState(0);
   const [mpSrc, getMpSrc] = useState("");
 
@@ -35,7 +37,7 @@ export default function GhostBox({ id, onFound }: Props) {
         <Box>
           <Box className="div-block">
             <h1 className="heading">
-              {BoxNum[id]}
+              {crateName[id]}
               <br />
               <span className="text-span">Founder's Crate</span>.
             </h1>
@@ -50,7 +52,9 @@ export default function GhostBox({ id, onFound }: Props) {
             loop
             muted
           />
-          <Text className="paragraph">{countMinted}/5000</Text>
+          <Text className="paragraph">
+            {countMinted}/{maxSupply[id]}
+          </Text>
         </Box>
         <Box className="div-block-2">
           <Box className="columns-6 w-row">
@@ -112,7 +116,7 @@ export default function GhostBox({ id, onFound }: Props) {
             </Box>
           </Box>
           <Text className="heading-6" lineHeight="44px" my="10px">
-            {CnSoul * cntMint} SOUL
+            {priceCrate[id] * cntMint} SOUL
           </Text>
         </Box>
       </Box>
