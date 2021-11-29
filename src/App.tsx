@@ -36,7 +36,10 @@ export default function App() {
               <a href="\#hero" className="button-8 w-button">
                 Mint
               </a>
-              <a href="\#" className="button-8 guide w-button">
+              <a
+                href="https://www.ghostfestival.me/info"
+                className="button-8 guide w-button"
+              >
                 Info
               </a>
             </div>
